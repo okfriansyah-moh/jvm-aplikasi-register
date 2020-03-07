@@ -9,11 +9,11 @@ Fitur Aplikasi:
 
 ## UI Mockup Aplikasi ##
 
-[![Mockup Aplikasi](docs/mockup-aplikasi-registrasi.jpg)]((docs/mockup-aplikasi-registrasi.jpg))
+
 
 ## Flow Aplikasi ##
 
-[![Flow Aplikasi](docs/flow-aplikasi.jpg)]((docs/flow-aplikasi.jpg))
+
 
 
 ## Cara Membuat Database ##
