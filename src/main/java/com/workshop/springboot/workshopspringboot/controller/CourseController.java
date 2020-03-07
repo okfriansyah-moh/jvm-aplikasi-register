@@ -1,23 +1,39 @@
 package com.workshop.springboot.workshopspringboot.controller;
 
+import com.workshop.springboot.workshopspringboot.entity.Materi;
+import com.workshop.springboot.workshopspringboot.repository.MateriRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+@Slf4j
 @Controller
 @RequestMapping("/course")
 public class CourseController {
 
-    @GetMapping("list")
-    public ModelMap list() {
-        return new ModelMap();
+    @Autowired
+    private MateriRepository materiRepository;
+
+    @GetMapping("/list")
+    public ModelMap list(Pageable pageable) {
+        Page<Materi> hasilQuery = materiRepository.findAll(pageable);
+
+        log.info("Hasil query ada {} record", hasilQuery.getSize());
+
+        return new ModelMap()
+                .addAttribute("daftarMateri", hasilQuery);
     }
 
     @GetMapping("/enroll")
-    public ModelMap displayEnrollment() {
-        return new ModelMap();
+    public ModelMap displayEnrollment(@RequestParam Materi materi) {
+        return new ModelMap().addAttribute("materi", materi);
     }
 
     @PostMapping("/enroll")
@@ -29,5 +45,6 @@ public class CourseController {
     public ModelMap displayEnrollmentConfirmation() {
         return new ModelMap();
     }
+
 }
 
