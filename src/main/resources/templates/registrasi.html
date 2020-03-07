@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Pendaftaran</title>
 </head>
 <body>
-<h1>Pendaftaran</h1>
-Halo <span th:text="${nama}">Test</span> <br>
-Waktu saat ini : <span th:text="${waktu}">Coba</span>
+<div layout:fragment="content">
+    <h1>Pendaftaran</h1>
+    Halo <span th:text="${nama}">Test</span> <br>
+    Waktu saat ini : <span th:text="${waktu}">Coba</span>
 
-<form action="/registrasi" method="post">
-    <table>
-        <tr>
-            <td>Nama</td>
-            <td>
-                <input type="text">
-            </td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>
-                <input type="text">
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>
-                <input type="submit" value="Daftar">
-            </td>
-        </tr>
-    </table>
-</form>
-
+    <form action="/registrasi" method="post">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="Daftar">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
 
