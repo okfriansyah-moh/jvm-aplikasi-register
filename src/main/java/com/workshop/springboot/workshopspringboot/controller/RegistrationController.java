@@ -11,19 +11,20 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @Controller
-public class RegistrasiController {
+@RequestMapping("/registration")
+public class RegistrationController {
 
-    @GetMapping("/registrasi")
-    public ModelMap registrasi() {
-        log.info("Registrasi");
-        ModelMap mp = new ModelMap();
-        mp.addAttribute("nama","okfri");
-        mp.addAttribute("waktu", LocalDateTime.now());
-        return mp;
+    @GetMapping("/form")
+    public ModelMap showRegistrationForm() {
+        log.info("Menjalankan method tampilkanFormRegistrasi");
+        ModelMap mm = new ModelMap();
+        mm.addAttribute("nama", "Endy");
+        mm.addAttribute("waktu", LocalDateTime.now());
+        return mm;
     }
 
-    @PostMapping("/registrasi")
-    public String prosesRegistrasiForm() {
+    @PostMapping("/form")
+    public String formRegistrationProcess() {
         log.info("Seharusnya nanti di sini insert ke database");
 
         /* jangan return html, return redirect supaya tidak dobel submit
@@ -31,12 +32,16 @@ public class RegistrasiController {
         return mav;
          */
 
-        return "redirect:konfirmasi";
+        return "redirect:confirmation";
+    }
+
+    @GetMapping("/confirmation")
+    public void showConfirmationPage() {
 
     }
 
-    @RequestMapping("/konfirmasi")
-    public void konfirmasi() {
-        log.info("Konfirmasi");
+    @GetMapping("verified")
+    public void emailVerificationn() {
+
     }
 }
