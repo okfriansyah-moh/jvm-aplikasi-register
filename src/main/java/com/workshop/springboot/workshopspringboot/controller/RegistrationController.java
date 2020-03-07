@@ -16,9 +16,9 @@ public class RegistrationController {
 
     @GetMapping("/form")
     public ModelMap showRegistrationForm() {
-        log.info("Menjalankan method tampilkanFormRegistrasi");
+        log.info("Menjalankan method showRegistrationForm");
         ModelMap mm = new ModelMap();
-        mm.addAttribute("nama", "Endy");
+        mm.addAttribute("nama", "Muhammad Okfriansyah");
         mm.addAttribute("waktu", LocalDateTime.now());
         return mm;
     }
