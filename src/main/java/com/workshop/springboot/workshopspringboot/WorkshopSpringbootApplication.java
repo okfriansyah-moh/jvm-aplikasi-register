@@ -51,7 +51,7 @@ public class WorkshopSpringbootApplication {
 	@Value("${gmail.folder}")
 	private String dataStoreFolder;
 
-	@Bean @Profile("!heroku")
+	@Bean @Profile("local")
 	public GoogleClientSecrets localFileClientSecrets() throws Exception {
 		return loadGoogleClientSecrets();
 	}

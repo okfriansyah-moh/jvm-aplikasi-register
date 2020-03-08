@@ -16,6 +16,7 @@ import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -31,7 +32,7 @@ import java.util.List;
 import java.util.Properties;
 
 @Slf4j
-@Service
+@Service @Profile("!default")
 public class GMailApiService {
     private static final List<String> SCOPES =
             Arrays.asList(GmailScopes.GMAIL_SEND);

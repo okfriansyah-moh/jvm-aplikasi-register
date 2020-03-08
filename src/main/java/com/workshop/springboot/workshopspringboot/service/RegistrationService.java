@@ -32,7 +32,7 @@ public class RegistrationService {
     @Autowired
     private PesertaRepository pesertaRepository;
     @Autowired private VerifikasiEmailRepository verifikasiEmailRepository;
-    @Autowired private GMailApiService gMailApiService;
+    @Autowired private EmailService emailService;
     @Autowired private MustacheFactory mustacheFactory;
 
     public void registrasiPesertaBaru(Peserta p) {
@@ -56,7 +56,7 @@ public class RegistrationService {
         StringWriter output = new StringWriter();
         templateEmail.execute(output, data);
 
-        gMailApiService.kirimEmail(
+        emailService.kirimEmail(
                 mailFrom,
                 ve.getPeserta().getEmail(),
                 "Verifikasi Email "+ve.getPeserta().getNama(),
