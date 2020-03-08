@@ -1,4 +1,4 @@
-package com.workshop.springboot.workshopspringboot.service.dto.request;
+package com.workshop.springboot.workshopspringboot.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

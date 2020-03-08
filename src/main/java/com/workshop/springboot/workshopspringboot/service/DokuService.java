@@ -3,7 +3,7 @@ package com.workshop.springboot.workshopspringboot.service;
 import com.workshop.springboot.workshopspringboot.entity.Pendaftaran;
 import com.workshop.springboot.workshopspringboot.entity.Peserta;
 import com.workshop.springboot.workshopspringboot.entity.Tagihan;
-import com.workshop.springboot.workshopspringboot.service.dto.request.DokuHostedRequestDTO;
+import com.workshop.springboot.workshopspringboot.dto.request.DokuHostedRequestDTO;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,7 @@ public class DokuService {
                 .EMAIL(p.getEmail()).MALLID(merchantId).CHAINMERCHANT("NA")
                 .AMOUNT(decFormat.format(pendaf.getMateri().getBiaya())).PURCHASEAMOUNT(decFormat.format(pendaf.getMateri().getBiaya()))
                 .TRANSIDMERCHANT(tagihan.getNomorInvoice()).PAYMENTCHANNEL("").REQUESTDATETIME(dateFormat.format(new Date()))
-                .CURRENCY("360").PURCHASECURRENCY("360").SESSIONID("1234567890").BASKET(keterangan).build();
+                .CURRENCY("360").PURCHASECURRENCY("360").SESSIONID("1234567890").BASKET(tagihan.getKeterangan()).build();
 
         String words = DigestUtils.sha1Hex(request.getAMOUNT() + request.getMALLID() + sharedKey + request.getTRANSIDMERCHANT());
         request.setWORDS(words);

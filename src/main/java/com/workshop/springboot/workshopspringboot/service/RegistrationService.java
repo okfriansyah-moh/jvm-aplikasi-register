@@ -11,7 +11,7 @@ import com.workshop.springboot.workshopspringboot.repository.PendaftaranReposito
 import com.workshop.springboot.workshopspringboot.repository.PesertaRepository;
 import com.workshop.springboot.workshopspringboot.repository.TagihanRepository;
 import com.workshop.springboot.workshopspringboot.repository.VerifikasiEmailRepository;
-import com.workshop.springboot.workshopspringboot.service.dto.request.DokuHostedRequestDTO;
+import com.workshop.springboot.workshopspringboot.dto.request.DokuHostedRequestDTO;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
