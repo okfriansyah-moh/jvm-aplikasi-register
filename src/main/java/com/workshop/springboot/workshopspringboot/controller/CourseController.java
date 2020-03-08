@@ -1,7 +1,10 @@
 package com.workshop.springboot.workshopspringboot.controller;
 
 import com.workshop.springboot.workshopspringboot.entity.Materi;
+import com.workshop.springboot.workshopspringboot.entity.Peserta;
 import com.workshop.springboot.workshopspringboot.repository.MateriRepository;
+import com.workshop.springboot.workshopspringboot.repository.PesertaRepository;
+import com.workshop.springboot.workshopspringboot.service.RegistrationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+
 
 @Slf4j
 @Controller
@@ -20,6 +26,10 @@ public class CourseController {
 
     @Autowired
     private MateriRepository materiRepository;
+    @Autowired private PesertaRepository pesertaRepository;
+
+    @Autowired private RegistrationService registrationService;
+
 
     @GetMapping("/list")
     public ModelMap list(Pageable pageable) {
@@ -32,9 +42,15 @@ public class CourseController {
     }
 
     @GetMapping("/enroll")
-    public ModelMap displayEnrollment(@RequestParam Materi materi) {
-        return new ModelMap().addAttribute("materi", materi);
+    public ModelMap displayEnrollment(@RequestParam Materi materi, Authentication auth) {
+        log.info(auth.toString());
+        User u = (User) auth.getPrincipal();
+        Peserta p = pesertaRepository.findByEmail(u.getUsername());
+        return new ModelMap()
+                .addAttribute("peserta", p)
+                .addAttribute("materi", materi);
     }
+
 
     @PostMapping("/enroll")
     public String processEnrollment() {
